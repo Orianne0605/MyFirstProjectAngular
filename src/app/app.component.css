@@ -1,0 +1,35 @@
+  *{
+    text-align: center;
+  }
+
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 18px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .row{
+    margin: 5rem auto;
+    width: 30em;
+  }
+
+  ul{
+    list-style-type: none;
+  }
+
+  button{
+    border-radius: 1.2em;
+    padding: 0.8rem 1.8rem;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+  }
+
+
+  @media screen and (max-width: 575px) {
+
+  }
