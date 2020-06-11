@@ -1,8 +1,14 @@
-<!--list-group-item-success / danger servent à modifier couleur de fond d'un tableau-->
-<li [ngClass]="{'list-group-item': true,
-                'list-group-item-success': appStatus === 'on',
-                'list-group-item-danger': appStatus === 'off'}">
-  <div *ngIf="appStatus === 'off'"></div>
-  <h4 [ngStyle]="{color: getColor()}">It's in my game : {{ appGame }} -- Status : {{ getStatus() }}</h4>
-  <input type="text" class="form-control" [(ngModel)]="appGame">
-</li>
+<ul class="list-group">
+  <li [ngClass]="{'list-group-item': true,
+                  'list-group-item-success': appStatus === 'on',
+                  'list-group-item-danger': appStatus === 'off'}">
+    <h4 [ngStyle]="{color: getColor()}">It's in my game : {{ appGame }} -- Status : {{ getStatus() }}</h4>
+    <input type="text" class="form-control" [(ngModel)]="appGame">
+    <button class="btn btn-success"
+            (click)="onSwitchOn()"
+            [disabled]="appStatus === 'on'">On</button>
+    <button class="btn btn-danger"
+            (click)="onSwitchOff()"
+            [disabled]="appStatus === 'off'">Off</button>
+  </li>
+</ul>

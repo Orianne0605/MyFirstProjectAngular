@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { GameService } from '../services/game.service';
 
 @Component({
   selector: 'app-my-game',
@@ -9,8 +10,9 @@ export class MyGameComponent implements OnInit {
 
   @Input() appGame: string;
   @Input() appStatus: string;
+  @Input() index: number;
 
-  constructor() { }
+  constructor(private gameService: GameService) { }
 
   ngOnInit(): void {
   }
@@ -25,5 +27,11 @@ export class MyGameComponent implements OnInit {
     } else if (this.appStatus === 'off') {
       return 'red';
     }
+  }
+  onSwitchOn() {
+    this.gameService.switchOnOne(this.index);
+  }
+  onSwitchOff() {
+    this.gameService.switchOffOne(this.index);
   }
 }

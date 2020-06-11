@@ -1,0 +1,22 @@
+<!--list-group-item-success / danger servent à modifier couleur de fond d'un tableau-->
+  <div class="col-xs-12">
+    <h2>My game</h2>
+
+    <p>Update : {{ lastUpdate | async | date: 'EEEE, MMMM d, y' | uppercase}}</p>
+
+    <ul class="list-group">
+      <app-my-game *ngFor="let appGame of appGames; let i = index"
+                  [appGame]="appGame.name"
+                  [appStatus]="appGame.status"
+                  [index]="i">
+      </app-my-game>
+    </ul>
+
+    <button class="btn btn-success"
+            (click)="onAll()">All on</button>
+    <button class="btn btn-danger"
+            (click)="offAll()">All off</button>
+  </div>
+
+
+

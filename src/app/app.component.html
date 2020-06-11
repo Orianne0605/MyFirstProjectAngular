@@ -1,19 +1,16 @@
-<app-top-bar></app-top-bar>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active"><a routerLink="auth">Authentification</a></li>
+      <li routerLinkActive="active"><a routerLink="appgames">Game</a></li>
+    </ul>
+    <div class="navbar-right">
+      <p>Vous êtes connecté depuis {{ secondes }} secondes !</p>
+    </div>
+  </div>
+</nav>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h2>My game</h2>
-
-      <p>Mis à jour : {{ lastUpdate | async | date: 'y MMMM EEEE d' | uppercase}}</p>
-
-      <ul class="list-group">
-        <app-my-game *ngFor="let appGame of appGames"
-                      [appGame]="appGame.name"
-                      [appStatus]="appGame.status"></app-my-game>
-      </ul>
-      <button class="btn btn-success"
-        [disabled]="!isAuth"
-        (click)="onAll()">All on</button>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

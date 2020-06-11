@@ -1,48 +1,29 @@
-import { Component } from '@angular/core';
-import { resolve } from 'dns';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
- isAuth = false;
+export class AppComponent implements OnInit, OnDestroy {
 
- lastUpdate = new Promise(
-   (resolve, reject) => {
-     const date = new Date();
-     setTimeout(
-       () => {
-         resolve(date);
-       }, 2000
-     );
-   }
- );
+  secondes: number;
+  counterSubscription: Subscription;
 
- appGames = [
-  {
-    name: 'computer',
-    status: 'off'
-  },
-  {
-    name: 'mouse',
-    status: 'on'
-  },
-  {
-    name: 'screen',
-    status: 'on'
+  constructor() {}
+
+  ngOnInit() {
+    const counter = Observable.interval(1000);
+    this.counterSubscription = counter.subscribe(
+      (value: number) => {
+        this.secondes = value;
+      }
+    );
   }
-];
-
- constructor(){
-   setTimeout(
-     () => {
-       this.isAuth = true;
-     }, 2000
-   );
- }
- onAll() {
-   console.log('on allume tout !');
- }
+  ngOnDestroy() {
+    this.counterSubscription.unsubscribe();
+  }
 }
